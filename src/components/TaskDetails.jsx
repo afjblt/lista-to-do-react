@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import Button from "./Button";
 
@@ -7,11 +7,12 @@ import './TaskDetails.css'
 
 const TaskDetails = () => {
     const params = useParams()
-
     return (
         <>
             <div className="back-button-container">
-                <Button>Voltar</Button>
+                <Link to='/'>
+                    <Button>Voltar</Button>
+                </Link>
             </div>
             <div className="task-details-container">
                 <h2>{params.taskTitle}</h2>

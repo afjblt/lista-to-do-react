@@ -7,17 +7,27 @@ const AddTask = ({handleTaskAdd}) => {
     const handleInputChange = (e) => {
         setInputData(e.target.value)
     }
+    
+    const validateTask = () => {
+        if (inputData === '' || inputData === undefined) {
+            return alert('Insira uma Tarefa!!')
+        } else {
+            handleAddTaskClick()
+        }
+    }
 
     const handleAddTaskClick = () => {
         handleTaskAdd(inputData)
         setInputData('')
     }
 
+    
+
     return (
         <div className="add-task-container">
             <input onChange={handleInputChange} value={inputData} type="text" className='add-task-input'/>
             <div className="add-task-button-container">
-                <Button onClick={handleAddTaskClick}>Adicionar</Button>
+                <Button onClick={validateTask}>Adicionar</Button>
             </div>
         </div>
     )

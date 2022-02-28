@@ -1,22 +1,19 @@
 import React from 'react'
 import { CgClose, CgInfo } from 'react-icons/cg'
-import { useRouter } from 'next/router'
+import {Link} from 'react-router-dom'
 import './Task.css'
 
 const Task = ({ task, handleTaskClick, handleTaskRemove }) => {
-    const roteamento = useRouter()
-
-    const handleDetailsClick = () => {
-        console.log(task.title)
-        roteamento.push(`/${task.title}`)
-    }
+    // const router = useRouter()
 
     return (
         <div className="task-container" style={task.completed ? { borderLeft: '6px solid chartreuse' } : {}}>
             <div className='task-title' onClick={() => { handleTaskClick(task.id) }} >{task.title}</div>
             <div className="buttons-container">
                 <button className='remove-task-button' onClick={() => { handleTaskRemove(task.id) }}><CgClose /></button>
-                <button className='see-task-details-button' onClick={handleDetailsClick}><CgInfo /></button>
+                <Link to={`/${task.title}`}>
+                    <button className='see-task-details-button'><CgInfo /></button>
+                </Link>
             </div>
         </div>
 
